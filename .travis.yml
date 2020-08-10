@@ -10,12 +10,18 @@ scripts:
   - docker run -e CI=true travis_test npm run test
 
 deploy:
-  provider: elasticbeanstalk
-  region: us-west-2
-  app: docker-react
-  env: DockerReact-env
-  bucket_name: $AWS_BUCKET
+  # provider: elasticbeanstalk
+  # region: us-west-2
+  # app: docker-react
+  # env: DockerReact-env
+  # bucket_name: $AWS_BUCKET
+  # on:
+  #   branch: master
+  # access_key_id: $AWS_ACCESS_KEY
+  # secret_access_key: $AWS_SECRET_KEY
+  provider: heroku
+  api_key:
+    secure: $HEROKU_API_KEY
+  app: dockerreacty
   on:
     branch: master
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: $AWS_SECRET_KEY
